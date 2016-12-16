@@ -1,0 +1,538 @@
+<html>
+
+<head>
+    <title>Pop-Up Lab</title>
+    <meta http-equiv="Pragma" CONTENT="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> </meta>
+    <script>
+        !function (win, option) {
+            var count = 0,
+                designWidth = option.designWidth,
+                designHeight = option.designHeight || 0,
+                designFontSize = option.designFontSize || 20,
+                callback = option.callback || null,
+                root = document.documentElement,
+                body = document.body,
+                rootWidth, newSize, t, self;
+            root.style.width = '100%';
+            function _getNewFontSize() {
+                var scale = designHeight !== 0 ? Math.min(win.innerWidth / designWidth, win.innerHeight / designHeight) : win.innerWidth / designWidth;
+                return parseInt(scale * 10000 * designFontSize) / 10000;
+            }
+            !function () {
+                rootWidth = root.getBoundingClientRect().width;
+                self = self ? self : arguments.callee;
+                if (rootWidth !== win.innerWidth && count < 20) {
+                    win.setTimeout(function () {
+                        count++;
+                        self();
+                    }, 0);
+                } else {
+                    newSize = _getNewFontSize();
+                    if (newSize + 'px' !== getComputedStyle(root)['font-size']) {
+                        root.style.fontSize = newSize + "px";
+                        return callback && callback(newSize);
+                    };
+                };
+            } ();
+            win.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function () {
+                clearTimeout(t);
+                t = setTimeout(function () {
+                    self();
+                }, 300);
+            }, false);
+        } (window, {
+            designWidth: 750,
+            designHeight: 1136,
+            designFontSize: 100
+        });
+    </script>
+<link rel="stylesheet/less" href="css/style.less">
+<script src="js/less.js"></script>
+</head>
+
+<body>
+    <style>
+        .sec2 {
+            background: url('assets/bgsec2.png') repeat 0 0;
+            background-size: 60%;
+        }
+        
+        .sec2 .bec {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .4s ease;
+            transform-origin: 0 0;
+            opacity: 0;
+        }
+        
+        .bec.show {
+            opacity: 1;
+        }
+        
+        .sec2 .bec .icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            position: relative;
+            border-radius: 50%;
+            background: #cc442a;
+            margin: .3rem auto;
+        }
+        
+        .sec2 .bec .icon img {
+            width: 70%;
+            height: 70%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        .sec2 .bec .text {
+            font-size: .3rem;
+            text-align: center;
+        }
+        
+        .sec2 .hand {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1rem;
+            height: 1rem;
+            display: none;
+        }
+        
+        .sec2 .hand span{
+            position: absolute;
+            top: .1rem;
+            left: .35rem;
+            width: .15rem;
+            height: .15rem;
+            border-radius: 9999999px;
+            border: 1px solid #fff;
+            display: block;
+        }
+        
+        @keyframes hand{
+            from {opacity: 1;
+                transform: scale(.8);}
+            to {opacity: 0;
+                transform: scale(1.5)}
+        }
+
+        
+        .sec2 .bec.center .hand {
+            display: block;
+        }
+        
+        .sec2 .hand img {
+            width: 80%;
+            height: 80%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            transition: all .3s ease;
+        }
+        
+        .sec2 canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .sec2 .logo {
+            background: url('assets/logo.png') no-repeat 0 0;
+            background-size: contain;
+            width: 2.75rem;
+            height: .55rem;
+            position: absolute;
+            right: .3rem;
+            bottom: .3rem;
+        }
+        
+        .sec3 {
+            z-index: 1000;
+            display: none;
+            animation: tup .7s ease;
+        }
+        
+        @keyframes tup {
+            from {
+                transform: translateY(100%)
+            }
+        }
+        
+        .sec3 header {
+            color: #f2f2f2;
+            font-size: 16px;
+            text-align: center;
+            height: 1.3rem;
+            line-height: 1.3rem;
+            overflow: hidden;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 999999;
+            margin-bottom: -1.3rem;
+            position: relative;
+        }
+        
+        .sec3 header .pull-left {
+            border-radius: 50%;
+            position: absolute;
+            height: .4rem;
+            width: .4rem;
+            right: .3rem;
+            top: .3rem;
+            background: #fff url('assets/delete.png?v=3123') no-repeat 0 0;
+            background-size: contain;
+            z-index: 999999;
+        }
+        
+        .tabs {
+            height: 100%;
+            overflow: hidden;
+            background: #333;
+        }
+        
+        .tabs .tab {
+            height: 100%;
+            overflow: hidden;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all .3s ease;
+            z-index: 100;
+        }
+        
+        .tab.current {
+            display: block;
+            transform: rotateY(0deg) scale(.7) translateX(0px);
+            border-radius: .5rem;
+            z-index: 200;
+        }
+        
+        .tab.prev {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(70deg) scale(.7) translateX(-50%);
+            transform-origin: left;
+        }
+        
+        .tab.next {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(-70deg) scale(.7) translateX(50%);
+            transform-origin: right;
+        }
+        
+        .tabs .tab>img,
+        .tabs .tab>video {
+            height: 100%;
+            width: 100%;
+            display: block;
+        }
+        
+        .tabs .tab.active {
+            display: block;
+        }
+        
+        .sliders {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: .5rem;
+            text-align: center;
+            line-height: .5rem;
+            font-size: 0;
+            z-index: 300;
+        }
+        
+        .sliders .slider {
+            background: rgba(255, 255, 255, .5);
+            display: inline-block;
+            height: 2px;
+            width: 10%;
+        }
+        
+        .sliders .slider.active {
+            background: #fff;
+        }
+        
+        
+        
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            z-index: 999999;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            background: #000;
+        }
+    </style>
+<div class="loading">loading...</div>
+<div class="section sec1 z-2">
+    <div class="bg z-1"></div>
+    <div class="stars z-3"></div>
+    <div class="rect z-2">
+        <div class="title">
+            <span>m</span>Lab
+        </div>
+        <div class="text">CREAZITIVITY<br>DAY</div>
+    </div>
+    <div class="topic z-4">
+        探索科技创意新趋势
+    </div>
+    <div class="traingle"></div>
+</div>
+<div class="section sec2 z-1">
+    <canvas id="s2_cv"></canvas>
+    <div class="bec" data-id="10089:17988">
+        <div class="icon"><img src="assets/icon/1.png"></div>
+        <div class="text">Transparent<br>Display</div>
+    </div>
+    <div class="bec" data-id="10089:17989">
+        <div class="icon"><img src="assets/icon/2.png"></div>
+        <div class="text">Dealer in<br>a Box</div>
+    </div>
+    <div class="bec" data-id="10089:17990">
+        <div class="icon"><img src="assets/icon/3.png"></div>
+        <div class="text">AR Business<br>Card</div>
+    </div>
+    <div class="bec" data-id="10089:17991">
+        <div class="icon"><img src="assets/icon/4.png"></div>
+        <div class="text">AR Brochure<br>Tutorial</div>
+    </div>
+    <div class="bec" data-id="10089:17992">
+        <div class="icon"><img src="assets/icon/5.png"></div>
+        <div class="text">AR Poster<br>Tutorial</div>
+    </div>
+    <div class="logo"></div>
+    <video src="assets/video/1.mp4" controls="controls" class="ic1" width="100%" height="100%"></video>
+    <video src="assets/video/2.mp4" controls="controls" class="ic2" width="100%" height="100%"></video>
+    <video src="assets/video/3.mp4" controls="controls" class="ic3" width="100%" height="100%"></video>
+    <video src="assets/video/4.mp4" controls="controls" class="ic4" width="100%" height="100%"></video>
+    <video src="assets/video/5.mp4" controls="controls" class="ic5" width="100%" height="100%"></video>
+    <div class="hand">
+        <img src="assets/hands1.png?123" class="hd1">
+        <span class="c1"></span>
+        <span class="c2"></span>
+        <span class="c3"></span>
+    </div>
+</div>
+<script src="js/wx.js"></script>
+<script src="js/zepto.js?sadfffff"></script>
+<script src="js/ease.js"></script>
+<script src="js/beacon.js?sadfffff"></script>
+<script src="js/wechat.js?sadffffff"></script>
+<script>
+    $(function(){
+        var secs = $('.section');
+    });
+</script>
+<script>
+    $(function () {
+        var sec = $('.section');
+        var cv = $('#s2_cv')[0];
+        var _w = sec.width(), _h = sec.height(), t = 0, t2 = 0, sin = Math.sin, cos = Math.cos, abs = Math.abs, random = Math.random, min = Math.min, max = Math.max;
+        var req = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (cb) { setTimeout(cb, 160) };
+        cv.width = _w;
+        cv.height = _h;
+        var ctx = cv.getContext('2d');
+        ctx.strokeStyle = "rgba(255,255,255,.5)";
+        ctx.lineWidth = 1;
+        var list = $('.sec2 .bec');
+        list.each(function (id) {
+            $(this).on('click', function () {
+                $('video').hide();
+                if ($(this).hasClass('center')) {
+                    $('.ic' + (id + 1)).show();
+                    $('.ic' + (id + 1))[0].play();
+                }
+            });
+            for (var i in beaconList) {
+                if ($(this).data('id') == i) {
+                    $(this).data('rssi', beaconList[i].rssi);
+                }
+            }
+        });
+        [].sort.call(list, function (a, b) {
+            return $(b).data('rssi') - $(a).data('rssi');
+        });
+        for (var i = 0; i < 3; i++) {
+            var _item = $(list[i]);
+            if (i == 0 && _item.data('rssi')) _item.addClass('center');
+            _item.addClass('show');
+        }
+        var showList = $('.show');
+        list.each(function (id) {
+            var wd = $(this).width(), hd = $(this).height();
+            var x, y, z;
+            if (id == 0) {
+                x = 10 * random() + 5;
+                y = 20 * random() + 5;
+            }
+            if (id == 3) {
+                x = 10 * random() + 5;
+                y = _h / 2 - hd / 2;
+            }
+            if (id == 4) {
+                x = _w - 10 * random() - wd;
+                y = 20 * random() + 5;
+            }
+            if (id == 1) {
+                x = _w - 10 * random() - wd;
+                y = _h / 2 - hd / 2;
+            }
+            if (id == 2) {
+                x = 25 * random() + 10;
+                y = _h - 20 * random() - hd;
+            }
+            $(this).css({ "transform": "translateX(" + ~~x + "px) translateY(" + ~~y + "px) scale(" + ~~z / 100 + ")" }).data('x', ~~x).data('y', ~~y).data('z', 50);
+        });
+        function map(x, a, b, c, d) {
+            return (x - a) / (b - a) * (d - c) + c;
+        }
+        function render() {
+            $('video').each(function () {
+                if (this.paused) {
+                    $(this).hide();
+                }
+            })
+            window.updateease();
+            t += 0.01;
+            if (t2 >= 1) { t2 = 0 }
+            t2 += 0.01;
+            var a = abs(sin(t));
+            var b = abs(sin(t / 2));
+            var c = map(t2, 0, 1, 0, 4);
+            $('.hand .c3').css({ "transform": "scale(" + (c) + ")", "opacity": (1 - c / 4) });
+            $('.hand .c1').css({ "transform": "scale(" + (c * 1.5) + ")", "opacity": (1 - c / 4) });
+            $('.hand .c2').css({ "transform": "scale(" + (c * 2) + ")", "opacity": (1 - c / 4) });
+            ctx.clearRect(0, 0, _w, _h);
+            list.each(function (id) {
+                for (var i in beaconList) {
+                    if ($(this).data('id') == i) {
+                        $(this).data('rssi', beaconList[i].rssi);
+                    }
+                }
+            });
+
+            [].sort.call(list, function (a, b) {
+                return $(b).data('rssi') - $(a).data('rssi');
+            });
+
+            for (var i = 0; i < list.length; i++) {
+                var _item = $(list[i]);
+                if (i == 0 && _item.data('rssi')) {
+                    _item.addClass('center');
+                } else {
+                    _item.removeClass('center');
+                }
+                if (i < 3) {
+                    _item.addClass('show');
+                } else {
+                    _item.removeClass('show').css({ "opacity": 0 });
+                }
+            }
+
+            var showList = $('.show');
+
+            showList.each(function (id) {
+                var next = $(this).nextAll('.show');
+                var x = ~~$(this).data('x');
+                var y = ~~$(this).data('y');
+                var z = ~~$(this).data('z');
+                var w = ~~$(this).width();
+                var h = ~~$(this).height();
+                if (beaconList && beaconList[$(this).data('id')]) {
+                    var _change = beaconList[$(this).data('id')].rssi + 50;
+                    x = sin(t + id) * _change + x;
+                    y = sin(t - id) * _change + y;
+                    if (x - w / 2 < 0) x = 0;
+                    if (x + w / 2 > _w) x = _w - w;
+                    if (y - h / 2 < 0) y = 0;
+                    if (y + h / 2 > _h) y = _h - h;
+                    if ($(this).hasClass('center')) {
+                        z = 130 - abs(_change * 1.2);
+                        $('.hand').css({ "transform": "translateX(" + ~~(x + w / 2 + 15) + "px) translateY(" + ~~(y + h / 2 + 15) + "px)", "display": "block" });
+                        $(this).css({ "opacity": ~~(t * 5 % 2) + .3 });
+                    } else {
+                        z = 100 - abs(_change * 1.2);
+                        $(this).css({ "opacity": 1 });
+                    }
+                };
+
+                if (id % 2) {
+                    ctx.strokeStyle = 'rgba(255,255,255,.5)';
+                } else {
+                    ctx.strokeStyle = 'rgba(' + 0xcc + ',' + 0x44 + ',' + 0x2a + ',.5)';
+                }
+
+                $(this).css({ "transform": "translateX(" + ~~x + "px) translateY(" + ~~y + "px) scale(" + ~~z / 100 + ")" });
+
+                if (next[0]) {
+                    var x2 = ~~next.data('x');
+                    var y2 = ~~next.data('y');
+                    var z2 = ~~next.data('z');
+                    var w2 = ~~next.width();
+                    var h2 = ~~next.height();
+
+                    var lt = 30 + a * 20;
+                    var xxx = max(w, w2, h, h2) / 2;
+                    for (var i = 0; i < lt; i++) {
+                        var _x = map(i, 0, lt, x, x2);
+                        var _y = map(i, 0, lt, y, y2);
+                        var _i = cos(map(i, 0, lt, Math.PI / 2, Math.PI * 2)) + 1;
+                        ctx.beginPath();
+                        ctx.arc(_x + w / 2, _y + h / 2, _i * xxx + xxx, 0, 2 * Math.PI);
+                        ctx.stroke();
+                    }
+                }
+            });
+            req(render);
+        }
+        function loadImage(url, callback) {
+            var img = new Image();
+            img.onload = function () {
+                img.onload = null;
+                callback(img);
+            }
+            img.src = url;
+        }
+        render();
+        loadImage('assets/landing_bg.png', function () {
+            $('.loading').remove();
+            setTimeout(function () {
+                $('.sec1').addClass('ani');
+            }, 500);
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>POPUP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="assets/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/sm.extend.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="theme-dark">
+        <header class="bar bar-nav show">
+            <a class="icon icon-left pull-left close-popup" href="#"></a>
+            <h1 class="title">标题</h1>
+        </header>
+        <div class="page-group">
+            <!-- 单个page ,第一个.page默认被展示-->
+            <div class="page page-current">
+                <!-- 工具栏 -->
+                <nav class="bar bar-tab bar-slider ts1">
+                    <div id="ts2">
+                        <a href="#" class="icon icon-share"></a>
+                        <a href="#" class="icon icon-remove"></a>
+                        <a href="#router-alert" class="icon icon-clock"></a>
+                    </div>
+                    <div id="ts1">
+                        <a href="#" class="icon icon-settings pull-left"></a>
+                        <a href="#" class="icon icon-right pull-right open-popup" href="#" data-popup=".t4"></a>
+                        <a href="#tab1" class="tab-link slider"></a>
+                        <a href="#tab2" class="tab-link active slider"></a>
+                        <a href="#tab3" class="tab-link slider"></a>
+                    </div>
+                </nav>
+
+                <!-- 这里是页面内容区 -->
+                <div class="content">
+                    <div class="tabs">
+                        <div id="tab1" class="tab">
+                            <div class="content-block">
+                                <div class="ft">
+                                    <span class="ft1">17</span> - <span class="ft2">20</span>
+                                    <span class="ea">FT</span>
+                                </div>
+                                <div class="des"><span class="icon icon-right"></span> 25.7 M SSE 53.6 HIGH TIDE</div>
+                                <a href="#" class="button button-round"><span class="icon icon-download">59.0 RAIN</span></a>
+                                <div class="camera"><a href="#" class="open-popup" data-popup=".t1"><span class="icon icon-picture">PATACY</span></a></div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab active">
+                            <div class="content-block">
+                                <div class="ft">
+                                    <span class="ft1">10</span> - <span class="ft2">12</span>
+                                    <span class="ea">FT</span>
+                                </div>
+                                <div class="des"><span class="icon icon-right"></span> 25.7 M SSE 53.6 HIGH TIDE</div>
+                                <a href="#" class="button button-round"><span class="icon icon-download">59.0 RAIN</span></a>
+                                <div class="camera"><a href="#" class="open-popup" data-popup=".t2"><span class="icon icon-picture">PATACY</span></a></div>
+                            </div>
+                        </div>
+                        <div id="tab3" class="tab">
+                            <div class="content-block">
+                                <div class="ft">
+                                    <span class="ft1">20</span> - <span class="ft2">30</span>
+                                    <span class="ea">FT</span>
+                                </div>
+                                <div class="des"><span class="icon icon-right"></span> 25.7 M SSE 53.6 HIGH TIDE</div>
+                                <a href="#" class="button button-round"><span class="icon icon-download">59.0 RAIN</span></a>
+                                <div class="camera"><a href="#" class="open-popup" data-popup=".t3"><span class="icon icon-picture">PATACY</span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="router-alert">
+                <div class="content-block">
+                    <div class="content-block-title">ALERT</div>
+                    <div class="list-block">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Enable Alert</div>
+                                    <div class="item-after">
+                                        <div class="item-input">
+                                            <label class="label-switch">
+                                <input type="checkbox">
+                                <div class="checkbox"></div>
+                              </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Time</div>
+                                    <div class="item-after">6.AM.S.T.S</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block-title">ALERT ME</div>
+                    <div class="list-block">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Height</div>
+                                    <div class="item-after">
+                                        <div class="item-input" id="height-picker">10ft - 16ft</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Tide</div>
+                                    <a href="#router-tide" class="white">High - Medium-Low - Low</a>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Water Temp</div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Wind</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <a href="#" class="button button-big button-round back">SAVE ALERT</a>
+                </div>
+            </div>
+            <div id="router-tide" class="page">
+                <div class="content-block">
+                    <div class="content-block">
+                        <a href="#" class="button button-big button-round">HIGH</a>
+                        <a href="#" class="button button-big button-round">MEDIUM - HIGH</a>
+                        <a href="#" class="button button-big button-round">MEDIUM</a>
+                        <a href="#" class="button button-big button-round">MEDIUM - LOW</a>
+                        <a href="#" class="button button-big button-round">LOW</a>
+                    </div>
+                </div>
+                <nav class="bar bar-tab">
+                    <span>DISABLED</span>
+                    <label class="label-switch">
+                    <input type="checkbox">
+                    <div class="checkbox"></div>
+                </label>
+                    <span>ENABLED</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- popup, panel 等放在这里 -->
+    <div class="panel-overlay"></div>
+    <div class="popup t1">
+        <div class="video">
+            <span>LIVE CAM</span>
+            <video src="xxx.mp4" poster="assets/xxx.jpg"></video>
+        </div>
+        <div class="content-block">
+            <h4>SURF FORECAST<br><span>tttT</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>WIND FORECAST<br><span>MPN</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>TIDE FORECAST<br><span>TTTT</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>REPORT</h4>
+            <p>
+                blablabla b lablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablab
+                lablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                blablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+            </p>
+        </div>
+        <div class="content-block circle">
+            <div class="top">
+                <span>SUNRISE<br>7:24 AM</span>
+            </div>
+            <div class="bottom">
+                <span>SUNSET<br>5:04 PM</span>
+            </div>
+        </div>
+    </div>
+    <div class="popup t2">
+        <div class="video">
+            <span>LIVE CAM</span>
+            <video src="xxx.mp4" poster="assets/xxx.jpg"></video>
+        </div>
+        <div class="content-block">
+            <h4>SURF FORECAST<br><span>tttT</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>WIND FORECAST<br><span>MPN</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>TIDE FORECAST<br><span>TTTT</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>REPORT</h4>
+            <p>
+                blablabla b lablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablab
+                lablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                blablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+            </p>
+        </div>
+        <div class="content-block circle">
+            <div class="top">
+                <span>SUNRISE<br>7:24 AM</span>
+            </div>
+            <div class="bottom">
+                <span>SUNSET<br>5:04 PM</span>
+            </div>
+        </div>
+    </div>
+    <div class="popup t3">
+        <div class="video">
+            <span>LIVE CAM</span>
+            <video src="xxx.mp4" poster="assets/xxx.jpg"></video>
+        </div>
+        <div class="content-block">
+            <h4>SURF FORECAST<br><span>tttT</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>WIND FORECAST<br><span>MPN</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>TIDE FORECAST<br><span>TTTT</span></h4>
+            <div class="chart">
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                    <div class="s">
+                        <span>1.0-1.3</span>
+                        <div class="cb"></div>
+                        <span>am</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chart2">
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+                <div class="cp">
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                    <div class="s">
+                        <span>W</span>
+                        <div class="cb"></div>
+                        <span>12s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="day">
+                <span>TODAY</span>
+                <span>TUE</span>
+                <span>WED</span>
+            </div>
+        </div>
+        <div class="content-block">
+            <h4>REPORT</h4>
+            <p>
+                blablabla b lablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablab
+                lablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                blablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+            </p>
+        </div>
+        <div class="content-block circle">
+            <div class="top">
+                <span>SUNRISE<br>7:24 AM</span>
+            </div>
+            <div class="bottom">
+                <span>SUNSET<br>5:04 PM</span>
+            </div>
+        </div>
+    </div>
+    <div class="popup t4">
+        <div class="bar bar-header-secondary">
+            <div class="searchbar">
+                <a class="searchbar-cancel">取消</a>
+                <div class="search-input">
+                    <label class="icon icon-search" for="search"></label>
+                    <input type="search" id='search' placeholder='输入关键字...' />
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="list-block">
+                <ul class="list-container">
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">10th Street<br><span>South Carolina</span></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto.js"></script>
+    <!-- 默认必须要执行$.init(),实际业务里一般不会在HTML文档里执行，通常是在业务页面代码的最后执行 -->
+    <script src="js/sm.min.js" charset='utf-8'></script>
+    <script src="js/sm.extend.js" charset='utf-8'></script>
+    <script type="text/javascript">
+    function tab_swipe() {
+        var tabs = $('.tabs');
+        var cur, pre, next;
+        var startX = 0;
+        var startY = 0;
+        var endX = 0;
+        var endY = 0;
+        var posX = 0;
+        var posY = 0;
+        var disX = 0;
+        var disY = 0;
+        var moving = false;
+        var tm = null;
+        var w = window.innerWidth;
+        var ani = false;
+
+        function map(x, a, b, c, d) {
+            return (x - a) / (b - a) * (d - c) + c;
+        }
+
+        var setcls = function() {
+            cur = $('.tab.active').addClass('current');
+            pre = cur.prev('.tab').addClass('prev');
+            next = cur.next('.tab').addClass('next');
+        }
+
+        var reset = function() {
+            $('.tab').each(function() {
+                $(this).removeClass('current prev next active');
+            });
+            $('.slider').each(function() {
+                if($(this).attr('href').match(cur.attr('id'))){
+                    $(this).addClass('active');
+                }else{
+                    $(this).removeClass('active');
+                }
+            })
+            cur&&cur.addClass('active');
+            cur = pre = next = null;
+            startX = endX = disX= startY = endY = disY = 0;
+            clearTimeout(tm);
+        }
+
+        var moving = function (e) {
+            moving = true;
+            posX = e.changedTouches[0].clientX;
+            startX = startX || posX;
+            disX = posX - startX;
+            endX = posX;
+            posY = e.changedTouches[0].clientY;
+            startY = startY || posY;
+            disY = posY - startY;
+            endY = posY;
+            e.preventDefault();
+            return true;
+        };
+        var down = function (e) {
+            moving = false;
+            ani = false;
+            // reset();
+            setcls();
+            startX = e.changedTouches[0].clientX;
+            e.preventDefault();
+        };
+        var moveDone = function (e) {
+            if (moving == false) {
+                reset();
+                return;
+            }
+            if(endX>startX&&disX>60&&pre[0]){
+                cur.removeClass('current').addClass('next');
+                pre.addClass('current').removeClass('prev');
+                next.removeClass('next');
+                cur = pre;
+                ani = true;
+            }
+            if(startX>endX&&disX<-60&&next[0]){
+                cur.removeClass('current').addClass('prev');
+                pre.removeClass('prev');
+                next.removeClass('next').addClass('current');
+                cur = next;
+                ani = true;
+            }
+            if(startY>endY&&disY<-60){
+                $('.ts1').addClass('ts2').removeClass('ts1');
+            }
+            if(startY<endY&&disY>60){
+                $('.ts2').addClass('ts1').removeClass('ts2');
+            }
+            if(ani){
+                tm = setTimeout(reset, 700);
+            }else{
+                reset();
+            }
+        };
+        tabs.bind("touchmove", moving).bind("touchstart", down).bind("touchend touchcancel", moveDone);
+    }
+    function video () {
+        var vs = $('.video');
+        vs.on('click',function(){
+            var v = $(this).find('video')[0];
+            if(v){
+                v.paused?v.play():v.pause();
+            }
+        })
+    }
+    function alert () {
+        var header = $('header.bar');
+        header.find('.close-popup').on('click', function(){
+            $.router.back();
+        });
+        $(document).on("pageInit", function(e, pageId, $page) {
+            if(pageId == 'router-alert'){
+                header.removeClass('show');
+            }else{
+                header.addClass('show');
+            }
+        });
+        $('#height-picker').picker({
+            cssClass: 'theme-dark',
+            toolbarTemplate: '<header class="bar bar-nav">\
+              <button class="button button-link pull-right close-picker">SAVE</button>\
+              </header>',
+              cols: [
+                {
+                  textAlign: 'center',
+                  values: ['9ft', '10ft', '11ft', '12ft', '13ft', '14ft', '15ft', '16ft', '17ft', '18ft', '19ft', '20ft']
+                },
+                {
+                  textAlign: 'center',
+                  values: ['9ft', '10ft', '11ft', '12ft', '13ft', '14ft', '15ft', '16ft', '17ft', '18ft', '19ft', '20ft']
+                }
+              ],
+              onOpen: function(e) {
+                e.setValue($('#height-picker').text().split(' - '));
+              },
+              onClose: function(e) {
+                $('#height-picker').text(e.value[0]+' - '+e.value[1]);
+              }
+        })
+    }
+    alert();
+    tab_swipe();
+    video();
+    $.init();
+    </script>
+</body>
+
+</html>
