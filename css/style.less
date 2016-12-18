@@ -24,14 +24,83 @@
     to {transform: translateY(-.25rem);}
 }
 
+@keyframes defocus {
+    0% {
+        -webkit-filter: blur(0px);
+        /* Chrome, Opera */
+        -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+    20% {
+        -webkit-filter: blur(2px);
+        /* Chrome, Opera */
+        -moz-filter: blur(2px);
+        -ms-filter: blur(2px);
+        filter: blur(2px);
+    }
+    40% {
+        -webkit-filter: blur(1px);
+        /* Chrome, Opera */
+        -moz-filter: blur(1px);
+        -ms-filter: blur(1px);
+        filter: blur(1px);
+    }
+    60% {
+        -webkit-filter: blur(3px);
+        /* Chrome, Opera */
+        -moz-filter: blur(3px);
+        -ms-filter: blur(3px);
+        filter: blur(3px);
+    }
+    80% {
+        -webkit-filter: blur(1px);
+        /* Chrome, Opera */
+        -moz-filter: blur(1px);
+        -ms-filter: blur(1px);
+        filter: blur(1px);
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        /* Chrome, Opera */
+        -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background: #000;
     font-family: 'Helveticanuelt', 'Ailerons', Arial, 'Microsoft Yahei', 'PingFang SC', 'opensans', sans-serif;
+    .allbg{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 150%;
+        overflow: hidden;
+        z-index: 10;
+        transition: all .1s ease;
+        img{
+            display: block;
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+    #particles-js{
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        z-index: 50;
+        transition: all .1s ease;
+    }
 }
 
 .loading {
@@ -89,52 +158,219 @@ body {
 }
 
 .sec1{
-    background: url('../assets/landing_bg.png') no-repeat center center fixed;
-    background-size: 100% 130%;
-    font-size: 1rem;
-    line-height: 1;
-    color: rgb(255, 255, 255);
-    .rect{
-        background: red;
-        box-shadow: 0 1px 5px 0 #333;
-        width: 5rem;
-        margin: auto;
-        padding: .2rem .2rem .6rem;
-        text-shadow: 0 1px 5px #333;
-        position: absolute;
-        top: 2.5rem;
-        left: 0;
-        right: 0;
-        .title{
-            font-size: .8rem;
-            margin: 0 0 .3rem -.5rem;
-            span{
-                text-decoration: underline;
-                font-family: cursive;
-                margin-right: .1rem;
-            }
+    .content{
+        width: 6rem;
+        margin: 2rem auto;
+        transition: all .1s ease;
+        animation: defocus 1.7s ease infinite;
+        img{
+            display: block;
+            max-width: 100%;
         }
-        .text{
-            margin-left: -.5rem;
-        }
-    }
-    .topic{
-        font-family: 'Ailerons';
-        font-size: 14px;
-        line-height: 2.5;
-        padding: 0 7px;
-        background: #fff;
-        color: red;
-        position: absolute;
-        top: 6rem;
-        left: 55%;
-        box-shadow: 0 1px 5px 0 #333;
     }
     .traingle{
         position: absolute;
         bottom: .5rem;
         left: 0;
         right: 0;
+    }
+}
+
+.sec2 {
+    background: url('assets/bgsec2.png') repeat 0 0;
+    background-size: 60%;
+}
+
+.sec2 .bec {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .4s ease;
+    transform-origin: 0 0;
+    opacity: 0;
+}
+
+.bec.show {
+    opacity: 1;
+}
+
+.sec2 .bec .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    border-radius: 50%;
+    background: #d61029;
+    margin: .3rem auto;
+}
+
+.sec2 .bec.center .icon{
+    background: #ffa111;
+    box-shadow: 0 0 5px 5px rgba(255, 161, 17, .5);
+}
+
+.sec2 .bec .icon img {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.sec2 .bec .text {
+    font-size: .35rem;
+    text-align: center;
+    color: #d61029;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.sec2 .bec.center .text{
+    color: #ffa111;
+}
+
+.sec2 .hand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    display: none;
+}
+
+.sec2 .hand span{
+    position: absolute;
+    top: .1rem;
+    left: .35rem;
+    width: .15rem;
+    height: .15rem;
+    border-radius: 9999999px;
+    border: 1px solid #fff;
+    display: block;
+}
+
+@keyframes hand{
+    from {opacity: 1;
+        transform: scale(.8);}
+    to {opacity: 0;
+        transform: scale(1.5)}
+}
+
+
+.sec2 .bec.center .hand {
+    display: block;
+}
+
+.sec2 .hand img {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    transition: all .3s ease;
+}
+
+.sec2 .logo {
+    background: url('/assets/logo.png') no-repeat 0 0;
+    background-size: contain;
+    width: 2rem;
+    height: 1rem;
+    position: absolute;
+    left: .3rem;
+    bottom: .3rem;
+}
+
+@keyframes zoomin {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+}
+
+.ics {
+    position: fixed;
+    background: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    animation: zoomin .3s ease;
+}
+
+div.ics{
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 4px;
+    padding: .3rem 0;
+    &::before{
+        position: absolute;
+        right: .5rem;
+        bottom: -.5rem;
+        background: #d61029;
+        content: '';
+        width: 5px;
+        height: 1rem;
+    }
+    &>div{
+        padding: 0 .3rem;
+        font-size: .35rem;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    a{
+        font-size: .4rem;
+        line-height: 2.5;
+        color: #d61029;
+        padding: 0 .4rem;
+        overflow: hidden;
+        white-space: nowrap;
+        display: block;
+        text-overflow: ellipsis;
+        font-family: cursive;
+    }
+    .close{
+        position: absolute;
+        padding: .2rem;
+        right: -.3rem;
+        top: .15rem;
+        background: #d61029;
+        box-shadow: 0 4px 20px 0 #d61029;
+        width: .5rem;
+        height: .5rem;
+        border-radius: 99999px;
+        img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .desc{
+        overflow-y: auto;
+        max-height: 76%;
+        p{
+            line-height: 1.5;
+            padding: 0;
+            margin: 0 0 .25rem;
+        }
+    }
+    .title{
+        border-left: 4px solid #d61029;
+        height: .7rem;
+        img{
+            max-height: 100%;
+            max-width: 100%;
+            display: block;
+        }
     }
 }
 
